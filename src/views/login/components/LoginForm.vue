@@ -8,7 +8,7 @@
         </n-form-item>
         <n-grid class="btn-group" :cols="1">
             <n-gi>
-                <n-button type="primary" @click="login">登录</n-button>
+                <n-button type="primary" @click="login(nform)">登录</n-button>
             </n-gi>
         </n-grid>
     </n-form>
@@ -16,46 +16,16 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useMessage } from 'naive-ui';
-import {validateUserName} from '../utils/rules'
 
-    const formData = ref({
-        username: '',
-        password: '',
-    });
+import rules from '../utils/rules'
+import login from '../utils/login'
 
-    const nform= ref(null)
+const formData = ref({
+    username: '',
+    password: '',
+});
 
-    const message=useMessage()
-
-    const rules={
-        username: [
-            {
-                required: true,
-                validator: validateUserName,
-                trigger: ['blur','input']
-            }
-        ],
-        password: [
-            {
-                required: true,
-                message: '密码不能为空',
-                trigger: ['blur']
-            }
-        ]
-    }
-
-    const login= (e) => {
-        e.preventDefault();
-        nform.value.validate((error) => {
-            if (!error) {
-                message.success('登录成功')
-            }
-        }).catch(() => {
-            message.error('登录失败')
-        });
-    }
-
+const nform= ref(null)
 </script>
 
 <style>
