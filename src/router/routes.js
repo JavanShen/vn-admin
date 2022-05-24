@@ -58,7 +58,7 @@ export const asyncRoutes = [
                 path: 'nester',
                 name: 'Nester',
                 component: RouterView,
-                meta: {title: '嵌套测试', icon: 'test', roles: ['admin']},
+                meta: {title: '嵌套测试', icon: 'permission', roles: ['admin']},
                 children: [
                     {
                         path: 'nester/nested',
