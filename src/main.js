@@ -7,7 +7,7 @@ import './permission'
 
 import 'animate.css'
 import '@/styles'
-import SvgIcon from '@/SvgIcon'
+import SvgIcon from '@/icon'
 import '../mock/api';
 
-export const app=createApp(App).use(createPinia()).use(router).use(SvgIcon).mount('#app');
+export const app = createApp(App).use(createPinia()).use(router).use(SvgIcon).mount('#app');
