@@ -1,8 +1,10 @@
 <!-- naive全局配置 -->
 <template>
-    <n-config-provider :locale="zhCN" :date-locale="dateZhCN">
+    <n-config-provider class="outer" :locale="zhCN" :date-locale="dateZhCN">
         <n-message-provider>
-            <App />
+            <n-loading-bar-provider>
+                <App />
+            </n-loading-bar-provider>
         </n-message-provider>
     </n-config-provider>
 </template>
@@ -11,3 +13,9 @@
 import { zhCN, dateZhCN } from 'naive-ui'
 import App from './App.vue'
 </script>
+
+<style scoped>
+.outer {
+    height: 100%;
+}
+</style>

@@ -4,6 +4,7 @@ import {usePermissionStore,useUserStore} from '@/store'
 import { getToken } from '@/utils/auth';
 
 router.beforeEach(async (to, from, next) => {
+    window.$loadingBar.start();
     if (to.path === '/login') {
         next();
     } else {
@@ -24,7 +25,7 @@ router.beforeEach(async (to, from, next) => {
                     routes.forEach(route => router.addRoute(route))
                     router.addRoute(
                         {
-                            path: '/.*',
+                            path: '/:pathMatch(.*)',
                             name: 'NotFound',
                             component: () => import('@/views/notFound.vue'),
                         }
@@ -39,5 +40,9 @@ router.beforeEach(async (to, from, next) => {
         }
     }
 });
+
+router.afterEach(() => {
+    window.$loadingBar.finish()
+})
 
 export default router;
