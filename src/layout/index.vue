@@ -1,12 +1,21 @@
 <template>
-    <n-layout has-sider>
-        <n-layout-sider>
-            <SlideBar />
-        </n-layout-sider>
-        <n-layout>
-            <n-layout-header>
-                <NavBar />
-            </n-layout-header>
+    <n-layout class="lay-out">
+        <n-layout-header class="header" bordered>
+            <NavBar :height="headerHeight" />
+        </n-layout-header>
+        <n-layout class="container" has-sider>
+            <n-layout-sider 
+                class="slider"
+                :collapsed-width="collapsedWidth" 
+                :collapsed="collapsed" 
+                :width="240" 
+                collapse-mode="width"
+                bordered
+                show-trigger
+                @collapse="collapsed = true" 
+                @expand="collapsed = false">
+                <SlideBar :collapsed="collapsed" :collapsed-width="collapsedWidth" />
+            </n-layout-sider>
             <n-layout-content>
                 <AppMain />
             </n-layout-content>
@@ -18,4 +27,20 @@
 import NavBar from './components/NavBar'
 import SlideBar from './components/SlideBar'
 import AppMain from './components/AppMain'
+
+import { ref } from 'vue'
+const collapsed = ref(false)
+const collapsedWidth = 64
+
+const headerHeight = '60px'
 </script>
+
+<style scoped>
+.header {
+    height: v-bind(headerHeight);
+}
+
+.container {
+    height: calc(100vh - v-bind(headerHeight));
+}
+</style>
