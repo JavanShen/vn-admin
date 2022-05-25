@@ -20,6 +20,6 @@ export const renderMenuLabel = ({path:link,label:name}) => {
 export const renderMenuIcon = ({iconName:name})=>{
     if(!name) return false
     return (
-        <svg-icon iconClass={name}></svg-icon>
+        <svg-icon icon-class={name}></svg-icon>
     )
 }
