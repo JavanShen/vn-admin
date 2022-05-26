@@ -10,7 +10,6 @@
 
 <script setup>
 import LoginForm from './components/LoginForm.vue'
-import Background from '@/components/Background.vue';
 import bg from '@/assets/login/bg.jpg'
 import decoration from '@/assets/login/decoration.jpg'
 </script>
