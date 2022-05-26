@@ -1,4 +1,4 @@
-# muvic
+# vn-admin
 
 ## Project setup
 ```
