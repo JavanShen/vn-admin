@@ -1,3 +1,4 @@
+// 语法规范
 module.exports = {
   root: true,
   env: {
