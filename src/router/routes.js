@@ -45,7 +45,7 @@ export const asyncRoutes = [
             {
                 path: 'user',
                 name: 'User',
-                component: () => import('@/views/empty.vue'),
+                component: () => import('@/views/user'),
                 meta: {title: '用户', icon: 'user', roles: ['admin']}
             },
             {
