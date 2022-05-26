@@ -1,3 +1,4 @@
+// webpack config
 const {NaiveUiResolver} = require('unplugin-vue-components/resolvers');
 
 const path=require('path');
