@@ -1,0 +1,17 @@
+/* 自定义 */
+.app-main-enter-active{
+    animation: fadeInLeft 0.5s;
+}
+
+.app-main-leave-active{
+    animation: fadeOutRight 0.3s;
+}
+
+/* 常规 */
+.fade-up-down-enter-active{
+    animation: fadeInUp 0.5s;
+}
+
+.fade-up-down-leave-active{
+    animation: fadeOutDown 0.5s;
+}
