@@ -8,7 +8,7 @@ Mock.mock('/user/list',{
         'birthday':'@date',
         'address':'@county(true)',
         'email':'@email',
-        'phone':'@integer(1,1000000000)'
+        'phone':'@string(number,11)'
     }]
 })
 
