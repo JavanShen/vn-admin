@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, toRaw } from 'vue'
 
-const props=defineProps({
+const props = defineProps({
 	tableData: {
 		type: Array,
 		default: () => [],
@@ -28,24 +28,28 @@ const props=defineProps({
 	}
 })
 
-const emits=defineEmits(['edit'])
+const emits = defineEmits(['edit'])
+
+const edit = (row) => {
+	emits('edit', toRaw(row))
+}
 
 const columnsFinal = computed(() => {
 	let columns = props.columns
 
-	if(props.isEdit){
-		let actionCol={
+	if (props.isEdit) {
+		let actionCol = {
 			title: '操作',
 			key: 'action',
 			render(row) {
 				return (
-					<n-button size="small" onClick={emits('edit',row)}>编辑</n-button>
+					<n-button size="small" onClick={() => { edit(row) }}>编辑</n-button>
 				)
 			}
 		}
 
-		return [...columns,actionCol]
-	}else {
+		return [...columns, actionCol]
+	} else {
 		return columns
 	}
 })
