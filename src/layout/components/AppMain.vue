@@ -1,9 +1,11 @@
 <template>
   <section class="container">
-    <router-view v-slot="{Component}">
+    <router-view v-slot="{Component, route}">
       <transition name="app-main" mode="out-in">
         <keep-alive :include="['Edit']">
-          <component :is="Component"/>
+          <div :key="route.name">
+            <component :is="Component"/>
+          </div>
         </keep-alive>
       </transition>
     </router-view>
