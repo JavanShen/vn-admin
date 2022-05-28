@@ -1,12 +1,13 @@
 <template>
   <section class="container">
-    <router-view v-slot="{Component, route}">
+    <router-view v-slot="{ Component, route }">
       <transition name="app-main" mode="out-in">
-        <keep-alive :include="['Edit']">
-          <div :key="route.name">
-            <component :is="Component"/>
-          </div>
-        </keep-alive>
+        <div>
+          <keep-alive>
+            <component v-if="route?.meta.keepAlive" :is="Component" :key="route.name" />
+          </keep-alive>
+          <component v-if="!route?.meta.keepAlive" :is="Component" :key="route.name" />
+        </div>
       </transition>
     </router-view>
   </section>
