@@ -26,7 +26,7 @@ export const asyncRoutes = [
                 path: 'edit',
                 name: 'Edit',
                 component: () => import('@/views/empty.vue'),
-                meta: {title: '创作', icon: 'edit', roles: ['admin','editor']}
+                meta: {title: '创作', icon: 'edit', roles: ['admin','editor'], keepAlive: true}
             },
             {
                 path: 'assets',
