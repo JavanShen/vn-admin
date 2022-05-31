@@ -1,28 +1,23 @@
-import { useRoute } from 'vue-router';
 import { onMounted, ref, watch } from 'vue';
+import { useRouterStore } from '@/store';
 
 export default function useActiveItem() {
     const selectedKey = ref(null);
     const menuRef = ref(null);
 
-    const route = useRoute()
+    const store = useRouterStore()
 
-    selectedKey.value = getKey(route.path)
+    selectedKey.value = store.path
     onMounted(() => {
-        menuRef.value?.showOption(getKey(route.path))
+        menuRef.value?.showOption(store.path)
     })
 
-    watch(() => route.path, (path) => {
-        selectedKey.value = getKey(path)
-        menuRef.value?.showOption(getKey(path))
+    watch(() => store.path, (path) => {
+        selectedKey.value = path
+        menuRef.value?.showOption(path)
     })
 
     return {
         selectedKey,
     }
-}
-
-function getKey(path) {
-    let arr = path.split('/')
-    return arr[arr.length - 1]
 }
