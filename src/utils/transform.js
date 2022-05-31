@@ -9,7 +9,7 @@ export function routesToMenus(routes, menus, baseUrl = '') {
                 label: route.meta.title,
                 path: fullPath,
                 iconName: route.meta.icon,
-                key: route.path,
+                key: fullPath,
             }
             if (route.children) {
                 menu.path = null
