@@ -61,7 +61,7 @@ export const asyncRoutes = [
                 meta: {title: '嵌套测试', icon: 'permission', roles: ['admin']},
                 children: [
                     {
-                        path: 'nester/nested',
+                        path: 'nested',
                         name: 'Nested',
                         component: () => import('@/views/empty.vue'),
                         meta: {title: '子元素1', roles: ['admin'], group: 'first'}
