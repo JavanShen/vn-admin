@@ -26,6 +26,8 @@
 import { computed, ref } from 'vue';
 import rules from '../utils/editFormRules.js'
 
+import { isSameObject } from '@/utils/validate.js'
+
 const form = ref(null)
 
 const props = defineProps({
@@ -42,6 +44,8 @@ const props = defineProps({
 })
 const emits = defineEmits(['comfirm'])
 
+const originalData = {...props.user}
+
 const autoCompleteOptions = computed(() => {
     return ["@gmail.com", "@163.com", "@qq.com"].map((suffix) => {
         const prefix = props.user.email.split("@")[0];
@@ -55,6 +59,10 @@ const autoCompleteOptions = computed(() => {
 const confirm = () => {
     form.value.validate((error) => {
         if(!error) {
+            if(isSameObject(originalData, form.value.model, true)){
+                return window.$message.error("没有修改任何数据")
+            }
+            
             emits('confirm', {...form.value.model})
         }
     }).catch(() => {
