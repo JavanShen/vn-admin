@@ -1,5 +1,5 @@
 <template>
-    <n-menu v-model:value="selectedKey" :options="store.menus" :collapsed="collapsed" :collapsed-width="collapsedWidth" :render-label="renderMenuLabel" :render-icon="renderMenuIcon"></n-menu>
+    <n-menu ref="menuRef" v-model:value="selectedKey" :options="store.menus" :collapsed="collapsed" :collapsed-width="collapsedWidth" :render-label="renderMenuLabel" :render-icon="renderMenuIcon"></n-menu>
 </template>
 
 <script setup>
