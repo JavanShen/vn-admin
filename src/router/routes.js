@@ -7,14 +7,13 @@ export const fixedRoutes = [
     }
 ]
 
-import Layout from '@/layout'
 import RouterView from '@/layout/components/AppMain.vue'
 
 export const asyncRoutes = [
     {
         path: '/',
         name: 'Layout',
-        component: Layout,
+        component: import('@/layout'),
         children: [
             {
                 path: 'statistics',

@@ -28,11 +28,15 @@ import NavBar from './components/NavBar'
 import SlideBar from './components/SlideBar'
 import AppMain from './components/AppMain'
 
+import useSaveRoute from '@/composables/router/useSaveRoute'
+
 import { ref } from 'vue'
 const collapsed = ref(false)
 const collapsedWidth = 64
 
 const headerHeight = '60px'
+
+useSaveRoute()
 </script>
 
 <style scoped>
