@@ -2,7 +2,7 @@ import { useRoute } from 'vue-router'
 import { useRouterStore } from '@/store'
 import { watch } from 'vue'
 
-const routerStore = useRouterStore()
+const store = useRouterStore()
 
 export default function useSaveRoute() {
     const route = useRoute()
@@ -14,7 +14,7 @@ export default function useSaveRoute() {
 }
 
 function save(route){
-    routerStore.setPath(route.path)
-    routerStore.setName(route.name)
-    routerStore.setMeta(route.meta)
+    store.setPath(route.path)
+    store.setName(route.name)
+    store.setMeta(route.meta)
 }
