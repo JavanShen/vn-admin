@@ -47,10 +47,6 @@ const actions = {
         this.addRoutes = routes
         this.routes = fixedRoutes.concat(routes[0]?.name === 'Layout' ? routes[0].children : routes)
     },
-    clearRoutes() {
-        this.routes = []
-        this.addRoutes = []
-    },
     generateRoutes(roles) {
         return new Promise(resolve => {
             // admin角色可以访问所有路由
