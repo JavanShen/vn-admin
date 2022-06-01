@@ -13,7 +13,7 @@ export const asyncRoutes = [
     {
         path: '/',
         name: 'Layout',
-        component: import('@/layout'),
+        component: () => import('@/layout'),
         children: [
             {
                 path: 'statistics',
@@ -98,7 +98,14 @@ export const asyncRoutes = [
                         ]
                     }
                 ]
-            },{
+            },
+            {
+                path: 'permission',
+                name: 'Permission',
+                component: () => import('@/views/permission'),
+                meta: {title: '权限测试', icon: 'permission', roles: ['admin','editor','user'], selfDestructBtn: ['admin']}
+            },
+            {
                 path: 'https://github.com/JavanShen/vn-admin',
                 name: 'ExternalLink',
                 meta: {title: 'github', icon: 'github'}
