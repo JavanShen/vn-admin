@@ -7,7 +7,7 @@ const state = () => ({
 })
 
 const getters = {
-    role: state => state.meta.roles,
+    roles: state => state.meta.roles,
     title: state => state.meta.title,
 }
 
