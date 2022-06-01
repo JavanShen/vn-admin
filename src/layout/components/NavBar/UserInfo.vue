@@ -9,7 +9,9 @@
 </template>
 
 <script setup>
-const options=[
+import useLogout from '@/composables/login/useLogout';
+
+const options = [
     {
         label: '个人信息',
         key: 'userInfo'
@@ -20,8 +22,12 @@ const options=[
     }
 ]
 
-const handelSelect=(key) => {
-    console.log(key)
+const { logout } = useLogout();
+
+const handelSelect = (key) => {
+    if(key==='logout') {
+        logout();
+    }
 }
 </script>
 
