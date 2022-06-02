@@ -1,24 +1,10 @@
 # vn-admin
 
-## Project setup
-```
-npm install
-```
+预览地址: [vn-admin](https://javanshen.github.io/vn-admin)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+账号: 
++ admin
++ editor
++ user
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+密码: 随意
