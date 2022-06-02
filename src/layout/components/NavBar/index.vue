@@ -1,22 +1,34 @@
 <template>
     <div class="nav">
-        <div class="nav-title">
-            <svg-icon icon-class="pineapple"></svg-icon>
-            <span style="font-size: 20px; margin-left: 10px;">Apine</span>
+        <div class="left">
+            <div class="nav-title">
+                <svg-icon icon-class="pineapple"></svg-icon>
+                <span style="font-size: 20px; margin-left: 10px;"><span :style="{ color: fontColor }">A</span>pine</span>
+            </div>
         </div>
-        <div class="avatar">
-            <UserInfo />
+        <div class="right">
+            <div class="dark-mode">
+                <DarkMode />
+            </div>
+            <div class="avatar">
+                <UserInfo />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import UserInfo from './UserInfo.vue'
+import DarkMode from './DarkMode.vue'
 
 defineProps({
     height: {
         type: String,
         default: '58px'
+    },
+    fontColor: {
+        type: String,
+        default: '#41b883'
     }
 })
 </script>
@@ -30,11 +42,20 @@ defineProps({
     height: v-bind(height);
 }
 
-.nav-title{
+.left,.right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-title {
     font-size: 34px;
     margin-left: 30px;
     display: flex;
     align-items: center;
+}
+
+.dark-mode {
+    margin-right: 24px;
 }
 
 .avatar {
