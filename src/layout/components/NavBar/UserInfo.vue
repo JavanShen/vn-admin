@@ -1,6 +1,6 @@
 <template>
     <n-dropdown trigger="hover" size="large" :options="options" @select="handelSelect">
-        <n-avatar round size="large" color="white" bordered>
+        <n-avatar round size="large" color="transparent" bordered>
             <div class="avatar">
                 <svg-icon icon-class="avatar"></svg-icon>
             </div>
