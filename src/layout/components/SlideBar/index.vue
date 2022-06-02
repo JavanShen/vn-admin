@@ -1,5 +1,7 @@
 <template>
-    <n-menu ref="menuRef" v-model:value="selectedKey" :options="store.menus" :collapsed="collapsed" :collapsed-width="collapsedWidth" :render-label="renderMenuLabel" :render-icon="renderMenuIcon"></n-menu>
+    <n-scrollbar>
+        <n-menu ref="menuRef" v-model:value="selectedKey" :options="store.menus" :collapsed="collapsed" :collapsed-width="collapsedWidth" :render-label="renderMenuLabel" :render-icon="renderMenuIcon"></n-menu>
+    </n-scrollbar>
 </template>
 
 <script setup>
