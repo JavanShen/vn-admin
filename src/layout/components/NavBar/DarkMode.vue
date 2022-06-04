@@ -14,13 +14,13 @@ import { ref, watch } from 'vue';
 import { darkTheme } from 'naive-ui';
 import { useConfigStore } from '@/store';
 
-const active = ref(false);
 const store = useConfigStore()
+const active = ref(store.theme ? true : false);
 
 watch(active, (value) => {
     if (value) {
         store.setTheme(darkTheme);
-    }else{
+    } else {
         store.setTheme(null);
     }
 })
