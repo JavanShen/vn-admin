@@ -5,6 +5,9 @@
                 <svg-icon icon-class="pineapple"></svg-icon>
                 <span style="font-size: 20px; margin-left: 10px;"><span :style="{ color: fontColor }">A</span>pine</span>
             </div>
+            <div class="bread-crumb">
+                <BreadCrumb />
+            </div>
         </div>
         <div class="right">
             <div class="dark-mode">
@@ -20,6 +23,7 @@
 <script setup>
 import UserInfo from './UserInfo.vue'
 import DarkMode from './DarkMode.vue'
+import BreadCrumb from './BreadCrumb.vue'
 
 defineProps({
     height: {
@@ -52,6 +56,23 @@ defineProps({
     margin-left: 30px;
     display: flex;
     align-items: center;
+}
+
+.bread-crumb {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.bread-crumb::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 19px;
+    background-color: v-bind(fontColor);
+    margin-right: 5px;
+    border-radius: 3px;
+    opacity: 0.8;
 }
 
 .dark-mode {
