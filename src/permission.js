@@ -1,5 +1,5 @@
 import router from '@/router';
-import {usePermissionStore,useUserStore} from '@/store'
+import { usePermissionStore, useUserStore } from '@/store'
 
 import { getToken } from '@/utils/auth';
 
@@ -19,7 +19,7 @@ router.beforeEach(async (to, from, next) => {
                 next();
             } else {
                 try {
-                    const {roles} = await user.getUserInfo(token)
+                    const { roles } = await user.getUserInfo(token)
                     const routes = await permission.generateRoutes(roles)
 
                     routes.forEach(route => router.addRoute(route))
