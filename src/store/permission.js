@@ -37,7 +37,7 @@ const state = () => {
 const getters = {
     menus: state => {
         let menus = []
-        routesToMenus(state.routes, menus)
+        routesToMenus(state.routes, menus, true)
         return menus
     }
 }

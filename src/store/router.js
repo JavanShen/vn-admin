@@ -4,6 +4,7 @@ const state = () => ({
     path: "",
     name: "",
     meta: {},
+    pathMeta: new Map(),
 })
 
 const getters = {
@@ -20,7 +21,10 @@ const actions = {
     },
     setMeta(meta) {
         this.meta = meta
-    }
+    },
+    setPathMeta(path, meta) {
+        this.pathMeta.set(path, meta)
+    },
 }
 
 const useRouterStore = defineStore("router", {
