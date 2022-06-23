@@ -1,5 +1,6 @@
 // webpack config
-const {NaiveUiResolver} = require('unplugin-vue-components/resolvers');
+const { NaiveUiResolver } = require('unplugin-vue-components/resolvers');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const path=require('path');
 const resolve=(dir) => {
@@ -14,6 +15,7 @@ module.exports = {
             require('unplugin-vue-components/webpack')({
                 resolvers: [NaiveUiResolver()]
             }),
+            new BundleAnalyzerPlugin(),
         ]
     },
     chainWebpack: config=>{
