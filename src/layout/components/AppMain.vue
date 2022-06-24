@@ -15,10 +15,3 @@
 
 <script setup>
 </script>
-
-<style scoped>
-.container {
-  box-sizing: border-box;
-  padding: 20px;
-}
-</style>

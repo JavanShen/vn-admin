@@ -26,10 +26,6 @@ import DarkMode from './DarkMode.vue'
 import BreadCrumb from './BreadCrumb.vue'
 
 defineProps({
-    height: {
-        type: String,
-        default: '58px'
-    },
     fontColor: {
         type: String,
         default: '#41b883'
@@ -43,7 +39,7 @@ defineProps({
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: v-bind(height);
+    height: 100%;
 }
 
 .left,.right {
