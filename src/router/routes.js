@@ -12,13 +12,14 @@ import RouterView from '@/layout/components/AppMain.vue'
 export const asyncRoutes = [
     {
         path: '/',
+        redirect: '/statistics',
         name: 'Layout',
         component: () => import('@/layout'),
         children: [
             {
                 path: 'statistics',
                 name: 'Statistics',
-                component: () => import('@/views/statistics'),
+                component: () => import('@/views/empty.vue'),
                 meta:{title: '统计',icon: 'statistics', roles: ['admin','editor','user']}
             },
             {
