@@ -1,5 +1,5 @@
 <template>
-	<n-data-table :columns="columnsFinal" :data="tableData" :pagination="pagination" :loading="loading" />
+	<n-data-table class="table" :columns="columnsFinal" :data="tableData" :pagination="pagination" :loading="loading" />
 </template>
 
 <script setup>
