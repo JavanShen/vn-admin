@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # rollup-plugin-visualizer分析文件
 stats.html
+
+# package
+package-lock.json
