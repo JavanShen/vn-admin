@@ -8,7 +8,10 @@ import permissionDirective from '@/directive/permission';
 
 import 'animate.css'
 import '@/styles'
+
 import SvgIcon from '@/icon'
+import 'virtual:svg-icons-register'
+
 import '../mock/api';
 
 export const app = createApp(App)
