@@ -2,7 +2,7 @@
 	<n-data-table class="table" :columns="columnsFinal" :data="tableData" :pagination="pagination" :loading="loading" />
 </template>
 
-<script setup>
+<script setup lang="jsx">
 import { computed, toRaw } from 'vue'
 
 const props = defineProps({

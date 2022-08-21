@@ -22,3 +22,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# rollup-plugin-visualizer分析文件
+stats.html
