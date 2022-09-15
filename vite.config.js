@@ -1,39 +1,33 @@
-import { defineConfig } from 'vite';
-import path from 'path';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import ViteRequireContext from '@originjs/vite-plugin-require-context';
-import envCompatible from 'vite-plugin-env-compatible';
-import { createHtmlPlugin } from 'vite-plugin-html';
+import { defineConfig } from "vite";
+import path from "path";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import ViteRequireContext from "@originjs/vite-plugin-require-context";
+import envCompatible from "vite-plugin-env-compatible";
+import { createHtmlPlugin } from "vite-plugin-html";
 import { visualizer } from "rollup-plugin-visualizer";
 
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
-import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import Components from "unplugin-vue-components/vite";
+import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 
 const resolve = (dir) => {
-    return path.join(__dirname, dir);
-}
+  return path.join(__dirname, dir);
+};
+
+const isProd = process.env.NODE_ENV === "production";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@',
-        replacement: resolve('src')
-      }
+        find: "@",
+        replacement: resolve("src"),
+      },
     ],
-    extensions: [
-      '.mjs',
-      '.js',
-      '.ts',
-      '.jsx',
-      '.tsx',
-      '.json',
-      '.vue'
-    ]
+    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
   },
   plugins: [
     vue(),
@@ -43,21 +37,21 @@ export default defineConfig({
     createHtmlPlugin({
       inject: {
         data: {
-          title: 'vn-admin'
-        }
-      }
+          title: "vn-admin",
+        },
+      },
     }),
     createSvgIconsPlugin({
-      iconDirs: [resolve('src/icon/svg')],
-      symbolId: 'icon-[name]'
+      iconDirs: [resolve("src/icon/svg")],
+      symbolId: "icon-[name]",
     }),
     Components({
-      resolvers: [NaiveUiResolver()]
+      resolvers: [NaiveUiResolver()],
     }),
-    visualizer()
+    visualizer(),
   ],
-  base: '/',
+  base: isProd ? "/vn-admin/" : "/",
   server: {
-    host: '0.0.0.0'
-  }
-})
+    host: "0.0.0.0",
+  },
+});
