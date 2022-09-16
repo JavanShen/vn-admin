@@ -46,8 +46,10 @@
     "vite-plugin-svg-icons": "^2.0.1",
     "webpack-bundle-analyzer": "^4.5.0"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js,jsx,vue}": [
