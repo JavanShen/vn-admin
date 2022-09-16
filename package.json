@@ -7,7 +7,9 @@
     "build": "vite build",
     "serve": "vite preview",
     "lint": "npm run lint:eslint",
-    "lint:eslint": "eslint --no-fix"
+    "lint:eslint": "eslint --no-fix",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
@@ -53,8 +55,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,vue}": [
-      "eslint",
       "prettier --write",
+      "eslint",
       "git add"
     ]
   }
