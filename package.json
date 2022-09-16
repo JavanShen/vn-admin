@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "vue-cli-service lint",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "lint": "npm run lint:eslint",
+    "lint:eslint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx --cache --no-fix",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
@@ -27,10 +30,15 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^7.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.5.0",
     "mockjs": "^1.1.0",
     "naive-ui": "^2.29.0",
+    "prettier": "^2.7.1",
     "rollup-plugin-visualizer": "^5.8.0",
     "svg-sprite-loader": "^6.0.11",
     "unplugin-vue-components": "^0.19.5",
@@ -39,5 +47,16 @@
     "vite-plugin-html": "3.2.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "webpack-bundle-analyzer": "^4.5.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "prettier --write",
+      "eslint"
+    ]
   }
 }
