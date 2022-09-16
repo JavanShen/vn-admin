@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "vue-cli-service lint",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "lint": "npm run lint:eslint",
+    "lint:eslint": "eslint ./src/ConfigProvide.vue --no-fix"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
