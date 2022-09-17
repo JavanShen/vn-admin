@@ -7,7 +7,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "lint": "npm run lint:eslint",
-    "lint:eslint": "eslint --no-fix",
+    "lint:eslint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx --no-fix",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
@@ -35,7 +35,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^7.0.0",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^12.5.0",
     "mockjs": "^1.1.0",
     "naive-ui": "^2.29.0",
     "prettier": "^2.7.1",
@@ -54,7 +54,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,vue}": [
+    "*.{js,jsx,ts,tsx,vue}": [
       "prettier --write",
       "eslint"
     ]
