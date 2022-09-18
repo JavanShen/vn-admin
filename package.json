@@ -7,7 +7,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "lint": "npm run lint:eslint",
-    "lint:eslint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx --no-fix",
+    "lint:eslint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx --cache --no-fix",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
