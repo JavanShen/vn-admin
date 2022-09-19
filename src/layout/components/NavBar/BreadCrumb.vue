@@ -7,30 +7,25 @@
     </n-breadcrumb>
 </template>
 
-<script setup>
-import { computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue'
 import { useRouterStore } from '@/store'
 
 const store = useRouterStore()
 
-const paths = computed(() => {
-    if (store.path === '') return []
-    return resolvePath(store.path)
-})
+const resolvePath = (path: string) => {
+    let baseUrl = ''
+    const paths = []
 
-function resolvePath(path) {
-    let baseUrl = '',
-        paths = []
+    const splitPath = path.split('/')
 
-    path = path.split('/')
-
-    if (path[0] === '') {
-        path.shift()
+    if (splitPath[0] === '') {
+        splitPath.shift()
     }
 
-    for (let i of path) {
+    for (const i of splitPath) {
         baseUrl += `/${i}`
-        let meta = store.pathMeta.get(baseUrl)
+        const meta = store.pathMeta.get(baseUrl)
         if (meta) {
             paths.push({
                 id: baseUrl,
@@ -43,4 +38,9 @@ function resolvePath(path) {
 
     return paths
 }
+
+const paths = computed(() => {
+    if (store.path === '') return []
+    return resolvePath(store.path)
+})
 </script>

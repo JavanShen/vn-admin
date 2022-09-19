@@ -1,40 +1,54 @@
 <template>
-    <n-cascader :value="region" check-strategy="child" placeholder="选择地区" :show-path="true" remote :options="options"
-    label-field="name" value-field="id" :on-update:show="handelOpen" :on-update:value="handelChange" >
+    <n-cascader
+        :value="region"
+        check-strategy="child"
+        placeholder="选择地区"
+        :show-path="true"
+        remote
+        :options="options"
+        label-field="name"
+        value-field="id"
+        :on-update:show="handelOpen"
+        :on-update:value="handelChange"
+    >
         <template #empty>
             <n-spin />
         </template>
     </n-cascader>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import { getRegionsData } from '@/utils/regions.js'
+<script setup lang="ts">
+import { ref } from 'vue'
+import getRegionsPickerData from '@/utils/regions'
+import type { PickerProvinceItem } from '@/types/picker/regionsPicker'
+import type { CascaderOption } from 'naive-ui'
 
-const options = ref([]);
+const options = ref<PickerProvinceItem[]>([])
 
 defineProps({
     region: {
         type: String,
-        default: null,
+        default: null
     }
 })
 
-const emits=defineEmits(['update:region'])
+const emits = defineEmits(['update:region'])
 
-const handelOpen = (type) => {
-    if(type && options.value.length===0) {
-        getRegionsData().then(res => {
-            options.value = res;
-        });
+const handelOpen = (type: Boolean) => {
+    if (type && options.value.length === 0) {
+        getRegionsPickerData().then(res => {
+            if (res) {
+                options.value = res
+            }
+        })
     }
 }
 
-const handelChange = (val,option,pathVal) => {
-    emits('update:region', joinPath(pathVal));
+function joinPath(path: CascaderOption[], connector = ' ') {
+    return path[0].name + connector + path[1]?.name + connector + path[2]?.name
 }
 
-function joinPath(path,connector=' ') {
-    return path[0].name+connector+path[1]?.name+connector+path[2]?.name
+const handelChange = (val: unknown, option: unknown, pathVal: CascaderOption[]) => {
+    emits('update:region', joinPath(pathVal))
 }
 </script>

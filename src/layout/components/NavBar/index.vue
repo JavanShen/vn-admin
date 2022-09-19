@@ -3,7 +3,9 @@
         <div class="left">
             <div class="nav-title">
                 <svg-icon icon-class="pineapple"></svg-icon>
-                <span style="font-size: 20px; margin-left: 10px;"><span :style="{ color: fontColor }">A</span>pine</span>
+                <span style="font-size: 20px; margin-left: 10px"
+                    ><span :style="{ color: fontColor }">A</span>pine</span
+                >
             </div>
             <div class="bread-crumb">
                 <BreadCrumb />
@@ -20,7 +22,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import UserInfo from './UserInfo.vue'
 import DarkMode from './DarkMode.vue'
 import BreadCrumb from './BreadCrumb.vue'
@@ -42,7 +44,8 @@ defineProps({
     height: 100%;
 }
 
-.left,.right {
+.left,
+.right {
     display: flex;
     align-items: center;
 }

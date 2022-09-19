@@ -2,39 +2,49 @@
     <n-scrollbar x-scrollable>
         <div class="history-bar">
             <n-space :wrap="false">
-                <n-tag v-for="(item, index) in history" :key="item.id" class="history-tag" closable
-                    :type="item.path === routerStore.path ? 'success' : 'default'" @click="redirect(item)"
-                    @close.stop="handelClose(index)">
-                    {{ item.title }}</n-tag>
+                <n-tag
+                    v-for="(item, index) in history"
+                    :key="item.id"
+                    class="history-tag"
+                    closable
+                    :type="item.path === routerStore.path ? 'success' : 'default'"
+                    @click="redirect(item)"
+                    @close.stop="handelClose(index)"
+                >
+                    {{ item.title }}</n-tag
+                >
             </n-space>
         </div>
     </n-scrollbar>
 </template>
 
-<script setup>
-import { watch, ref } from 'vue';
-import { useRouterStore } from '@/store';
-import router from "@/router";
+<script setup lang="ts">
+import { watch, ref } from 'vue'
+import { useRouterStore } from '@/store'
+import router from '@/router'
+
+import type { Meta } from '@/types/router'
+
+interface HistoryItem extends Meta {
+    id: string
+    path: string
+}
 
 const routerStore = useRouterStore()
 
-const history = ref([])
+const history = ref<HistoryItem[]>([])
 
-const handelClose = (index) => {
+const handelClose = (index: number) => {
     history.value.splice(index, 1)
 }
 
-const redirect = (item) => {
+const redirect = (item: HistoryItem) => {
     router.push({ path: item.path })
 }
 
-watch(() => [routerStore.path, routerStore.pathMeta?.size], () => {
-    addHistory()
-})
-
-function addHistory(val = routerStore.path) {
+const addHistory = (val = routerStore.path) => {
     const meta = routerStore.pathMeta.get(val)
-    if (meta && (!history.value.find(item => item.path === val))) {
+    if (meta && !history.value.find(item => item.path === val)) {
         history.value.push({
             id: val,
             path: val,
@@ -42,6 +52,13 @@ function addHistory(val = routerStore.path) {
         })
     }
 }
+
+watch(
+    () => [routerStore.path, routerStore.pathMeta?.size],
+    () => {
+        addHistory()
+    }
+)
 </script>
 
 <style scoped>

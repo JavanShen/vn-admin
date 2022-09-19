@@ -1,56 +1,70 @@
 <template>
-	<n-data-table class="table" :columns="columnsFinal" :data="tableData" :pagination="pagination" :loading="loading" />
+    <n-data-table
+        class="table"
+        :columns="columnsFinal"
+        :data="tableData"
+        :pagination="pagination"
+        :loading="loading"
+    />
 </template>
 
-<script setup lang="jsx">
+<script setup lang="tsx">
 import { computed, toRaw } from 'vue'
 
-const props = defineProps({
-	tableData: {
-		type: Array,
-		default: () => [],
-	},
-	columns: {
-		type: Array,
-		default: () => [],
-	},
-	pagination: {
-		type: Object,
-		default: () => ({}),
-	},
-	loading: {
-		type: Boolean,
-		default: false,
-	},
-	isEdit: {
-		type: Boolean,
-		default: false
-	}
+import type { UserItem } from '@/types/request/user'
+import type { PaginationProps } from 'naive-ui'
+
+interface Column {
+    title: string
+    key: string
+    minWidth: number
+}
+
+interface Props {
+    tableData: UserItem[]
+    columns: Column[]
+    pagination: PaginationProps
+    loading: boolean
+    isEdit: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    tableData: () => [],
+    columns: () => [],
+    pagination: () => ({}),
+    loading: false,
+    isEdit: false
 })
 
 const emits = defineEmits(['edit'])
 
-const edit = (row) => {
-	emits('edit', toRaw(row))
+const edit = (row: UserItem) => {
+    emits('edit', toRaw(row))
 }
 
 const columnsFinal = computed(() => {
-	let columns = props.columns
+    const columns = props.columns
 
-	if (props.isEdit) {
-		let actionCol = {
-			title: '操作',
-			key: 'action',
-			render(row) {
-				return (
-					<n-button size="small" onClick={() => { edit(row) }}>编辑</n-button>
-				)
-			}
-		}
+    if (props.isEdit) {
+        const actionCol = {
+            title: '操作',
+            key: 'action',
+            render(row: UserItem) {
+                return (
+                    <n-button
+                        size="small"
+                        onClick={() => {
+                            edit(row)
+                        }}
+                    >
+                        编辑
+                    </n-button>
+                )
+            }
+        }
 
-		return [...columns, actionCol]
-	} else {
-		return columns
-	}
+        return [...columns, actionCol]
+    }
+    return columns
 })
 </script>

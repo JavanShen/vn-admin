@@ -8,8 +8,8 @@
     </n-dropdown>
 </template>
 
-<script setup>
-import useLogout from '@/composables/login/useLogout';
+<script setup lang="ts">
+import useLogout from '@/composables/login/useLogout'
 
 const options = [
     {
@@ -22,11 +22,11 @@ const options = [
     }
 ]
 
-const { logout } = useLogout();
+const { logout } = useLogout()
 
-const handelSelect = (key) => {
-    if(key==='logout') {
-        logout();
+const handelSelect = (key: string) => {
+    if (key === 'logout') {
+        logout()
     }
 }
 </script>
