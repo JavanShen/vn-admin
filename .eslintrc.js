@@ -22,6 +22,16 @@ module.exports = {
                 devDependencies: true
             }
         ],
+        'import/extensions': [
+            'error',
+            'ignorePackages',
+            {
+                js: 'never',
+                jsx: 'never',
+                ts: 'never',
+                tsx: 'never'
+            }
+        ],
         'vue/multi-word-component-names': 0,
         'no-restricted-syntax': [
             'error',
@@ -41,5 +51,10 @@ module.exports = {
                     '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.'
             }
         ]
+    },
+    settings: {
+        'import/resolver': {
+            typescript: {}
+        }
     }
 }
