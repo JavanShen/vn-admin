@@ -1,26 +1,44 @@
 import { isExternal } from '@/utils/validate.js'
+import savePathMeta from '@/utils/storage'
+import cloneDeep from 'lodash/cloneDeep'
+
+import type { Router } from '@/interface/router'
+import type { MenuOption } from 'naive-ui'
 
 /**
- * 
+ *
  * @param {Array} routes 路由列表
  * @param {Array} menus 菜单列表
  * @param {Boolean} [save=false] 是否保存映射关系
  * @param {String} [baseUrl=""] 基础路径
  */
-export function routesToMenus(routes, menus, save = false, baseUrl = '') {
-    let groups = new Map()
+export default function routesToMenus(
+    routes: Router[],
+    menus: MenuOption[],
+    save = false,
+    baseUrl = ''
+) {
+    const groups = new Map()
     routes.forEach(route => {
-        if ((!route.hidden) && route.meta) {
-            let fullPath = isExternal(route.path) ? route.path : (isExternal(baseUrl) ? baseUrl : baseUrl + '/' + route.path)
-            let menu = {
+        if (!route.hidden && route.meta) {
+            let fullPath = ''
+            if (isExternal(route.path)) {
+                fullPath = route.path
+            } else if (isExternal(baseUrl)) {
+                fullPath = baseUrl
+            } else {
+                fullPath = `${baseUrl}/${route.path}`
+            }
+
+            const menu: MenuOption = {
                 label: route.meta.title,
                 path: fullPath,
                 iconName: route.meta.icon,
-                key: fullPath,
+                key: fullPath
             }
 
             if (save) {
-                let meta = simpleDeepCopy(route.meta)
+                const meta = cloneDeep(route.meta)
                 if (!route.children) meta.isLeaf = true
                 savePathMeta(fullPath, meta)
             }
@@ -32,7 +50,7 @@ export function routesToMenus(routes, menus, save = false, baseUrl = '') {
             }
 
             if (route.meta.group) {
-                let key = baseUrl + '-' + route.meta.group
+                const key = `${baseUrl}-${route.meta.group}`
                 if (!groups.has(key)) {
                     groups.set(key, {
                         type: 'group',
@@ -49,28 +67,4 @@ export function routesToMenus(routes, menus, save = false, baseUrl = '') {
             }
         }
     })
-}
-
-let store=null
-function savePathMeta(path, meta) {
-    import('@/store').then(module => {
-        if(store===null){
-            store = module.useRouterStore()
-        }
-        store.setPathMeta(path, meta)
-    })
-}
-
-// 简易的深拷贝
-export function simpleDeepCopy(obj) {
-    if (typeof obj !== 'object') {
-        return obj
-    }
-    let newObj = Array.isArray(obj) ? [] : {}
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            newObj[key] = typeof obj[key] === 'object' ? simpleDeepCopy(obj[key]) : obj[key]
-        }
-    }
-    return newObj
 }
