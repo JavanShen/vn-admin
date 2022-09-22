@@ -1,19 +1,24 @@
-type Province = { id: string; name: string }[]
+interface Item {
+    id: string
+    name: string
+}
+
+interface CityItem extends Item {
+    province: string
+}
+
+interface CountyItem extends Item {
+    city: string
+}
+
+type Province = Item[]
 
 type City = {
-    [key: string]: {
-        id: string
-        province: string
-        name: string
-    }[]
+    [key: string]: CityItem[]
 }
 
 type County = {
-    [key: string]: {
-        id: string
-        city: string
-        name: string
-    }[]
+    [key: string]: CountyItem[]
 }
 
-export { Province, City, County }
+export { Province, City, County, Item, CityItem, CountyItem }
