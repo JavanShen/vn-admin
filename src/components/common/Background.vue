@@ -1,12 +1,14 @@
 <template>
-    <div class="bg" :style="{backgroundImage:'url('+src+')'}" ></div>
+    <div class="bg" :style="{ backgroundImage: 'url(' + src + ')' }"></div>
 </template>
 
-<script setup>
-defineProps({
-    src: {
-        default: ''
-    }
+<script setup lang="ts">
+interface Props {
+    src: string
+}
+
+withDefaults(defineProps<Props>(), {
+    src: ''
 })
 </script>
 
