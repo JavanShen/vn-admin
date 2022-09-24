@@ -1,7 +1,5 @@
 import { defineStore } from 'pinia'
-import type { RouteRecordRaw } from 'vue-router'
-
-type Meta = RouteRecordRaw['meta']
+import type { Meta } from '@/types/router'
 
 const useRouterStore = defineStore('router', {
     state: () => ({

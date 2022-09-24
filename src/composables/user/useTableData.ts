@@ -1,14 +1,16 @@
-import { getUserList } from "@/api/user";
-import { ref } from "vue";
+import { getUserList } from '@/api/user'
+import { ref } from 'vue'
+
+import type { UserItem } from '@/types/request/user'
 
 export default function useTableData() {
-    const tableData = ref([]);
+    const tableData = ref<UserItem[]>([])
     const loading = ref(false)
 
     const getData = async () => {
         loading.value = true
         try {
-            const { data: res } = await getUserList();
+            const { data: res } = await getUserList()
             if (res.code === 0) {
                 tableData.value = res.data
             }
