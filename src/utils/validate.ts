@@ -39,7 +39,7 @@ export function isSameObject(obj1: Obj, obj2: Obj, isStrict = false) {
     return isSame(obj1)
 }
 
-export function isIntersect(arr1 = [], arr2 = []) {
+export function isIntersect(arr1: unknown[] = [], arr2: unknown[] = []) {
     const map = new Map()
 
     for (let i = 0; i < arr1.length; i++) {

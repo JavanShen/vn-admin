@@ -23,14 +23,13 @@ import getRegionsPickerData from '@/utils/regions'
 import type { PickerProvinceItem } from '@/types/picker/regionsPicker'
 import type { CascaderOption } from 'naive-ui'
 
-interface Props {
-    region: string | null
-}
-
 const options = ref<PickerProvinceItem[]>([])
 
-withDefaults(defineProps<Props>(), {
-    region: null
+defineProps({
+    region: {
+        type: String,
+        default: null
+    }
 })
 
 const emits = defineEmits(['update:region'])

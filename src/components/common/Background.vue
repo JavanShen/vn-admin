@@ -3,12 +3,11 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-    src: string
-}
-
-withDefaults(defineProps<Props>(), {
-    src: ''
+defineProps({
+    src: {
+        type: String,
+        default: ''
+    }
 })
 </script>
 
