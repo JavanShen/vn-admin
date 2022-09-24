@@ -2,7 +2,7 @@ import { isExternal } from '@/utils/validate.js'
 import savePathMeta from '@/utils/storage'
 import cloneDeep from 'lodash/cloneDeep'
 
-import type { Router } from '@/interface/router'
+import type { Router } from '@/types/router'
 import type { MenuOption } from 'naive-ui'
 
 /**

@@ -1,5 +1,5 @@
 import service from '@/utils/request'
-import type { LoginInfo, UserInfo } from '@/interface/request/login'
+import type { LoginInfo, UserInfo } from '@/types/request/login'
 
 export function loginByUserName(info: LoginInfo) {
     return service<{ token: string }>({

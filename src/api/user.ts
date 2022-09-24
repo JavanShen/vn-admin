@@ -1,5 +1,5 @@
 import service from '@/utils/request'
-import { UserItem } from '@/interface/request/user'
+import { UserItem } from '@/types/request/user'
 
 export function getUserList() {
     return service<UserItem[]>({

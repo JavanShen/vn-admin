@@ -1,5 +1,5 @@
 import { useRouterStore } from '@/store'
-import type { Meta } from '@/interface/router'
+import type { Meta } from '@/types/router'
 
 type Store = ReturnType<typeof useRouterStore> | null
 let store: Store = null

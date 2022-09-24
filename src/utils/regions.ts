@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep'
-import type { Item, CityItem, CountyItem } from '@/interface/data/regions'
+import type { Item, CityItem, CountyItem } from '@/types/data/regions'
 
 interface CloneCountyItem extends CountyItem {
     isLeaf?: boolean
@@ -14,7 +14,7 @@ interface CloneProvinceItem extends Item {
     children?: CloneCityItem[]
 }
 
-export default async function getRegionsData() {
+export default async function getRegionsPickerData() {
     try {
         const { default: province } = await import(
             /* webpackChunkName: "regions" */ '@/data/regions/province.js'

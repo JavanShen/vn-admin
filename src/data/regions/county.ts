@@ -1,4 +1,4 @@
-import type { County } from '@/interface/data/regions'
+import type { County } from '@/types/data/regions'
 
 const county: County = {
     '120100000000': [

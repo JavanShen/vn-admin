@@ -1,4 +1,4 @@
-import type { City } from '@/interface/data/regions'
+import type { City } from '@/types/data/regions'
 
 const city: City = {
     '110000000000': [

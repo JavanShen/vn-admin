@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import getRegionsPickerData from '@/utils/regions'
-import type { PickerProvinceItem } from '@/interface/picker/regionsPicker'
+import type { PickerProvinceItem } from '@/types/picker/regionsPicker'
 import type { CascaderOption } from 'naive-ui'
 
 interface Props {

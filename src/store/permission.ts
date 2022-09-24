@@ -1,11 +1,11 @@
-import { fixedRoutes, asyncRoutes } from '@/router/routes.js'
+import { fixedRoutes, asyncRoutes } from '@/router/routes'
 import { defineStore } from 'pinia'
 
-import { routesToMenus } from '@/utils/transform.js'
+import routesToMenus from '@/utils/transform'
 import cloneDeep from 'lodash/cloneDeep'
 
-import type { Router } from '@/interface/router'
-import type { Role } from '@/interface/user'
+import type { Router } from '@/types/router'
+import type { Role } from '@/types/request/login'
 import type { MenuOption } from 'naive-ui'
 
 // 检查是否有权限

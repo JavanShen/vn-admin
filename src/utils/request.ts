@@ -1,7 +1,18 @@
 import axios from 'axios'
 import { getToken } from '@/utils/auth'
 
-const service = axios.create({
+import type { Response, Request } from '@/types/request/common'
+import type { Axios, AxiosRequestConfig, AxiosPromise } from 'axios'
+
+type Config<T = any> = AxiosRequestConfig<Request<T>>
+type Res<T = any> = AxiosPromise<Response<T>>
+
+interface Service extends Axios {
+    <T>(config: AxiosRequestConfig): Res<T>
+    <T>(url: string, config?: AxiosRequestConfig): Res<T>
+}
+
+const service: Service = axios.create({
     timeout: 1000
 })
 

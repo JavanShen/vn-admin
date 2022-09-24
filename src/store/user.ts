@@ -1,7 +1,7 @@
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { loginByUserName, getUserInfo } from '@/api/login'
 import { defineStore } from 'pinia'
-import type { UserInfo, LoginInfo } from '@/interface/user'
+import type { UserInfo, LoginInfo } from '@/types/request/login'
 
 const useUserStore = defineStore('user', {
     state: () => {

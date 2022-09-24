@@ -1,4 +1,4 @@
-import type { Province } from '@/interface/data/regions'
+import type { Province } from '@/types/data/regions'
 
 const province: Province = [
     {
