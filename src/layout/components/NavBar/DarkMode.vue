@@ -9,19 +9,19 @@
     </n-switch>
 </template>
 
-<script setup>
-import { ref, watch } from 'vue';
-import { darkTheme } from 'naive-ui';
-import { useConfigStore } from '@/store';
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+import { darkTheme } from 'naive-ui'
+import { useConfigStore } from '@/store'
 
 const store = useConfigStore()
-const active = ref(store.theme ? true : false);
+const active = ref(Boolean(store.theme))
 
-watch(active, (value) => {
+watch(active, value => {
     if (value) {
-        store.setTheme(darkTheme);
+        store.setTheme(darkTheme)
     } else {
-        store.setTheme(null);
+        store.setTheme(null)
     }
 })
 </script>
