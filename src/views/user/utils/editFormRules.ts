@@ -1,21 +1,21 @@
 import { isEmail, isPhone } from '@/utils/validate'
 
-function validateEmail(rule, value) {
-    if(value==='') return new Error('邮箱不能为空')
+import type { FormItemRule } from 'naive-ui'
+
+function validateEmail(rule: FormItemRule, value: string) {
+    if (value === '') return new Error('邮箱不能为空')
     if (isEmail(value)) {
         return true
-    } else {
-        return new Error('邮箱格式不正确')
     }
+    return new Error('邮箱格式不正确')
 }
 
-function validatePhone(rule, value) {
-    if(value==='') return new Error('电话不能为空')
+function validatePhone(rule: FormItemRule, value: string) {
+    if (value === '') return new Error('电话不能为空')
     if (isPhone(value)) {
         return true
-    } else {
-        return new Error('手机号码格式不正确')
     }
+    return new Error('手机号码格式不正确')
 }
 
 const rules = {
@@ -29,8 +29,8 @@ const rules = {
     birthday: [
         {
             required: true,
-            validator: (rule,value)=>{
-                if(value==='') return new Error('生日不能为空')
+            validator: (rule: FormItemRule, value: string) => {
+                if (value === '') return new Error('生日不能为空')
                 return true
             },
             trigger: ['blur']
@@ -56,7 +56,7 @@ const rules = {
             validator: validatePhone,
             trigger: ['blur']
         }
-    ],
+    ]
 }
 
 export default rules
