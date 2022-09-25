@@ -60,7 +60,7 @@ const usePermissionStore = defineStore('permission', {
             )
         },
         generateRoutes(roles: Role[]) {
-            return new Promise(resolve => {
+            return new Promise<Router[]>(resolve => {
                 // admin角色可以访问所有路由
                 const accessedRoutes = roles.includes('admin')
                     ? asyncRoutes

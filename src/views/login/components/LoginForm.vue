@@ -4,28 +4,34 @@
             <n-input v-model:value="formData.username"></n-input>
         </n-form-item>
         <n-form-item label="密码" path="password">
-            <n-input v-model:value="formData.password" type="password" show-password-on="mousedown" ></n-input>
+            <n-input
+                v-model:value="formData.password"
+                type="password"
+                show-password-on="mousedown"
+            ></n-input>
         </n-form-item>
         <n-grid class="btn-group" :cols="1">
             <n-gi>
-                <n-button type="primary" @click="login(nform)">登录</n-button>
+                <n-button type="primary" @click="login(nform, formData)">登录</n-button>
             </n-gi>
         </n-grid>
     </n-form>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue'
+
+import type { FormInst } from 'naive-ui'
 
 import rules from '../utils/rules'
 import login from '../utils/login'
 
 const formData = ref({
     username: '',
-    password: '',
-});
+    password: ''
+})
 
-const nform= ref(null)
+const nform = ref<FormInst | null>(null)
 </script>
 
 <style>

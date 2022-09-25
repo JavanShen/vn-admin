@@ -8,12 +8,12 @@
     </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import { useConfigStore } from '@/store';
-import LoginForm from './components/LoginForm.vue'
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useConfigStore } from '@/store'
 import bg from '@/assets/login/bg.jpg'
 import decoration from '@/assets/login/decoration.jpg'
+import LoginForm from './components/LoginForm.vue'
 
 const store = useConfigStore()
 
@@ -35,7 +35,7 @@ const brightness = ref(store.theme?.name === 'dark' ? 0.6 : 1)
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
 
