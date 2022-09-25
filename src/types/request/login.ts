@@ -15,4 +15,4 @@ interface UserInfo {
     roles: Role[]
 }
 
-export { LoginInfo, UserInfo, Role }
+export type { LoginInfo, Role, UserInfo }

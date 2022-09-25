@@ -1,22 +1,19 @@
 import type { RouteRecordRaw } from 'vue-router'
-import type { Role } from './user'
+import type { Role } from './request/login'
 
 type Meta = Partial<{
     title: string
     icon: string
     roles: Role[]
     group: string
+    keepAlive: boolean
+    [key: string]: unknown
 }>
 
 type Router = RouteRecordRaw & {
     hidden?: boolean
-    meta?: {
-        title: string
-        icon: string
-        roles: Role[]
-        group?: Meta
-    }
+    meta?: Meta
     children?: Router[]
 }
 
-export { Router, Meta }
+export type { Router, Meta }
