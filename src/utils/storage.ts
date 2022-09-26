@@ -1,4 +1,4 @@
-import { useRouterStore } from '@/store'
+import useRouterStore from '@/store/router'
 import type { Meta } from '@/types/router'
 
 type Store = ReturnType<typeof useRouterStore> | null

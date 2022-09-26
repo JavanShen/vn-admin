@@ -1,11 +1,10 @@
 import axios from 'axios'
 import { getToken } from '@/utils/auth'
 
-import type { Response, Request } from '@/types/request/common'
+import type { Response } from '@/types/request/common'
 import type { Axios, AxiosRequestConfig, AxiosPromise } from 'axios'
 
-type Config<T = any> = AxiosRequestConfig<Request<T>>
-type Res<T = any> = AxiosPromise<Response<T>>
+type Res<T = unknown> = AxiosPromise<Response<T>>
 
 interface Service extends Axios {
     <T>(config: AxiosRequestConfig): Res<T>
