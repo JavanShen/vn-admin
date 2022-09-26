@@ -2,7 +2,8 @@
 module.exports = {
     root: true,
     env: {
-        node: true
+        node: true,
+        'vue/setup-compiler-macros': true
     },
     extends: [
         'plugin:vue/vue3-essential',
@@ -12,7 +13,10 @@ module.exports = {
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
-        parser: '@typescript-eslint/parser'
+        parser: '@typescript-eslint/parser',
+        ecmaFeatures: {
+            jsx: true
+        }
     },
     plugins: ['@typescript-eslint'],
     rules: {
@@ -27,7 +31,7 @@ module.exports = {
             'error',
             {
                 props: true,
-                ignorePropertyModificationsFor: ['config']
+                ignorePropertyModificationsFor: ['config', 'route', 'p', 'c', 'co']
             }
         ],
         // 省略文件后缀
@@ -67,7 +71,15 @@ module.exports = {
             {
                 allowForLoopAfterthoughts: true
             }
-        ]
+        ],
+        // 解除ts中Boolean类型限制, 因为naive-ui中使用了Boolean
+        '@typescript-eslint/ban-types': 'off',
+        // 不强制解构
+        'prefer-destructuring': ['error', { object: false, array: false }],
+        // 单个方法时不强制默认导出
+        'import/prefer-default-export': 'off',
+        // 忽略某些引入
+        'import/no-unresolved': [2, { ignore: ['virtual:svg-icons-register'] }]
     },
     // 解决报错unable resolve
     settings: {
