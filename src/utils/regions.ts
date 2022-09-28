@@ -16,14 +16,8 @@ interface CloneProvinceItem extends Item {
 
 export default async function getRegionsPickerData() {
     try {
-        const { default: province } = await import(
-            /* webpackChunkName: "regions" */ '@/data/regions/province.js'
-        )
-        const { default: city } = await import(
-            /* webpackChunkName: "regions" */ '@/data/regions/city.js'
-        )
-        const { default: county } = await import(
-            /* webpackChunkName: "regions" */ '@/data/regions/county.js'
+        const { province, city, county } = await import(
+            /* webpackChunkName: "regions" */ 'china-region-data'
         )
 
         const provinceClone: CloneProvinceItem[] = cloneDeep(province)
