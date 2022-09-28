@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # rollup-plugin-visualizer分析文件
 stats.html
+
+# unplugin-vue-components生成的类型文件
+components.d.ts
