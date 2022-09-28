@@ -1,13 +1,21 @@
 import Mock from 'mockjs'
 
-const TOKEN = {
+interface Role {
+    [key: string]: string[]
+}
+
+interface Token {
+    [key: string]: string
+}
+
+const TOKEN: Token = {
     admin: '123abc',
     editor: '456def',
     user: '789ghi',
     guest: '123'
 }
 
-const ROLE = {
+const ROLE: Role = {
     '123abc': ['admin'],
     '456def': ['editor'],
     '789ghi': ['user'],
@@ -26,7 +34,7 @@ Mock.mock('/user/info', config => {
                 phone: /^1[34578]\d{9}$/,
                 address: '@county(true)',
                 introduction: '@cparagraph(1,3)',
-                roles: ROLE[token]
+                roles: ROLE[token as string]
             }
         }
     }
@@ -37,7 +45,7 @@ Mock.mock('/user/info', config => {
 })
 
 Mock.mock('/login', config => {
-    const token = TOKEN[JSON.parse(config.body).username]
+    const token = TOKEN[JSON.parse(config.body as string).username]
     return {
         code: token ? 0 : 1,
         msg: token ? '登录成功' : '用户名或密码错误',
