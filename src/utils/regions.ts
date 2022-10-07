@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep'
-import type { Item, CityItem, CountyItem } from '@/types/data/regions'
+import type { ProvinceItem, CityItem, CountyItem } from 'china-region-data'
 
 interface CloneCountyItem extends CountyItem {
     isLeaf?: boolean
@@ -10,7 +10,7 @@ interface CloneCityItem extends CityItem {
     isLeaf?: boolean
 }
 
-interface CloneProvinceItem extends Item {
+interface CloneProvinceItem extends ProvinceItem {
     children?: CloneCityItem[]
 }
 
